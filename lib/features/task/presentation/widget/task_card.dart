@@ -8,8 +8,9 @@ import 'package:todo_bloc_new/features/task/presentation/bloc/task_event.dart';
 import '../bloc/task_bloc.dart';
 
 class TaskCard extends StatelessWidget {
-  const TaskCard({super.key, required this.task});
+  const TaskCard({super.key, required this.task, this.description});
   final Task? task;
+  final Task? description;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +28,8 @@ class TaskCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
+                onLongPress: () => {},
                 onTap: () {
-                  print("task");
                   // Toggle completion
                   if (!(task?.isCompleted ?? false)) {
                     context.read<TaskBloc>().add(UpdateTaskStatusEvent(
@@ -56,7 +57,10 @@ class TaskCard extends StatelessWidget {
                       task?.title ?? "",
                       style: TextStyle(fontSize: 16, color: Colors.white),
                     ),
-                    const SizedBox(height: 8),
+                    Text(
+                      task?.description ?? "",
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

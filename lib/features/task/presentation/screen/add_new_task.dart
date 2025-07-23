@@ -21,6 +21,7 @@ class AddTaskScreen extends StatefulWidget {
 class _AddTaskScreenState extends State<AddTaskScreen> {
   final _formkey = GlobalKey<FormState>();
   String tittle = "";
+  String description = "";
   String selectedPriority = '1';
   Category? selectedCategory;
   DateTime selectedDate = DateTime.now();
@@ -74,20 +75,27 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               child: Form(
                 key: _formkey,
                 child: Column(
+                  spacing: 10,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Tittle",
-                      style: TextStyle(fontSize: 20),
+                    Center(
+                      child: Text(
+                        "Tittle",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
                     ),
                     TextFormField(
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
-                        hintText: "Enter Task Title",
-                        hintStyle: TextStyle(color: Colors.white70),
-                        border: OutlineInputBorder(),
-                      ),
+                          hintText: "Enter Task Title",
+                          hintStyle: TextStyle(color: Colors.white70),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white70)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white70))),
                       onChanged: (value) {
                         if (value.trim().isNotEmpty) tittle = value;
                       },
@@ -96,6 +104,26 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           return "Please enter tittle ";
                         }
                         tittle = value!;
+                        return null;
+                      },
+                    ),
+                    TextFormField(
+                      style: const TextStyle(color: Colors.white),
+                      decoration: const InputDecoration(
+                          hintText: "Enter Task Description",
+                          hintStyle: TextStyle(color: Colors.white70),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white70)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.white70))),
+                      onChanged: (value) {
+                        if (value.trim().isNotEmpty) description = value;
+                      },
+                      validator: (value) {
+                        if (value?.trim().isEmpty ?? true) {
+                          return "Please enter task description ";
+                        }
+                        description = value!;
                         return null;
                       },
                     ),
@@ -136,6 +164,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                                   fontSize: 16, color: Colors.white70)),
                           Spacer(),
                           Container(
+                            height: 30,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 4),
                             decoration: BoxDecoration(
@@ -190,7 +219,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           _formkey.currentState?.save();
                           context.read<TaskBloc>().add(AddTaskEvent(Task(
                                 title: tittle,
-                                description: 'hey',
+                                description: description,
                                 isCompleted: false,
                                 createdAt: selectedDate,
                                 category: selectedCategory ?? Category(),
@@ -213,7 +242,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               ),
             );
           } else {
-            return const Center(child: Text('Welcome to your task manager!'));
+            return const Center(child: Text('Add your Tasks'));
           }
         },
       ),

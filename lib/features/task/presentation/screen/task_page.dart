@@ -63,7 +63,7 @@ class _TaskScreenState extends State<TaskScreen> {
               return Column(
                 children: [
                   SearchBarWidget(
-                    hintText: "Search for Your Tasks....",
+                    hintText: "Search task name ...",
                     onChanged: (query) {
                       query.isNotEmpty
                           ? context
