@@ -57,7 +57,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       GetAllCategoryEvent events, Emitter<TaskState> emit) async {
     try {
       final category = await getAllCategory(); // ⬅️ simple `.call()`
-      print("DAt0 ${category}");
+      print("DAt0 $category");
       emit(TaskSuccess(category: category));
     } catch (e) {}
   }
@@ -86,7 +86,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     try {
       await updateTaskStatus(events.id, events.isCompleted);
       final task = await getAllTasksUseCase(); // ⬅️ simple `.call()`
-      print("DAt0 ${task}");
+      print("DAt0 $task");
       emit(TaskSuccess(tasks: task));
 
       print("tasl");

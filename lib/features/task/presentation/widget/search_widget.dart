@@ -14,12 +14,18 @@ class SearchBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
-      child: TextField(
+      child: TextFormField(
         onChanged: onChanged,
         decoration: InputDecoration(
           hintText: hintText,
+          enabledBorder:
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.white70)),
+          focusedBorder:
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.white70)),
+
           prefixIcon: Icon(Icons.search),
-          border: OutlineInputBorder(),
+          // border: OutlineInputBorder(borderSide: BorderSide(color: )),
+
           // filled: true,
           fillColor: Colors.grey[200],
         ),

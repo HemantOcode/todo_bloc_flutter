@@ -168,8 +168,8 @@ class TaskLocalDataSourceImpl implements TaskLocalDataSource {
       c.imagePath as category_imagePath
     FROM tasks t
     LEFT JOIN categories c ON t.categoryId = c.id
-    WHERE t.title LIKE ?
-  ''', ['%$query%']);
+   WHERE t.title LIKE ? COLLATE NOCASE
+  ''', ['%${query.trim()}%']);
 
     return result.map((json) => TaskModel.fromJson(json)).toList();
   }

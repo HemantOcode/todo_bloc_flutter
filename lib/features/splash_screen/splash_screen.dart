@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Image(
                 height: 100,
                 width: 100,
-                image: AssetImage("assets/img/correct_splash.png")),
+                image: AssetImage("assets/img/splash_icon.png")),
             Text(
               'UpToDo',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),

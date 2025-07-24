@@ -3,21 +3,13 @@ import '../../domain/entities/task.dart';
 
 class TaskModel extends Task {
   TaskModel(
-      {int? id,
-      required String title,
-      required String description,
-      required bool isCompleted,
-      required Category category,
-      required DateTime createdAt,
-      required int priority})
-      : super(
-            id: id,
-            title: title,
-            description: description,
-            isCompleted: isCompleted,
-            category: category,
-            createdAt: createdAt,
-            priority: priority);
+      {super.id,
+      required super.title,
+      required super.description,
+      required super.isCompleted,
+      required super.category,
+      required super.createdAt,
+      required super.priority});
   factory TaskModel.fromJson(Map<String, dynamic> json) {
     return TaskModel(
       id: json['id'],

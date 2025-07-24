@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -20,7 +19,7 @@ class TaskCard extends StatelessWidget {
         shape: ContinuousRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
-        color: Colors.black12,
+        color: Color(0xFF363636),
         //ark theme
         child: Padding(
           padding: const EdgeInsets.all(12.0),

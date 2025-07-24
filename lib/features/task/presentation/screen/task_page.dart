@@ -1,7 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_bloc_new/core/theme/app_color.dart';
 import 'package:todo_bloc_new/features/task/presentation/widget/search_widget.dart';
 import '../bloc/task_bloc.dart';
 import '../bloc/task_event.dart';
@@ -26,7 +24,7 @@ class _TaskScreenState extends State<TaskScreen> {
           title: const Text('Tasks'),
           actions: [
             IconButton(
-              icon: const Icon(Icons.refresh),
+              icon: const Icon(Icons.restore_page),
               onPressed: () {
                 context.read<TaskBloc>().add(const GetAllTasksEvents());
               },
@@ -46,7 +44,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image(
-                      image: AssetImage("assets/img/Empty_task.png"),
+                      image: AssetImage("assets/img/home_task_img.png"),
                       height: 350.0,
                       width: 300.0,
                     ),
